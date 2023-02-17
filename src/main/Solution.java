@@ -5,28 +5,29 @@ import java.util.Arrays;
 class Solution {
     public static void pancakeSort(int[] inputArray) {
     	
-    	for (int i=1; i<=inputArray.length;i++) {
-    		int target=find(inputArray,inputArray.length-i+1);
-    		System.out.println(target);
-    		flip(inputArray,target);
-    		flip(inputArray,inputArray.length-i);
-    		
+    	for (int i=inputArray.length; i>1; i--) {
+    		int maxIndex=find(inputArray,i);
+    		System.out.println(maxIndex);
+    		if (maxIndex!=i-1) {
+    			flip(inputArray,maxIndex);
+    			flip(inputArray,i-1);
+    		}
     	}
     }
     
     private static int find(int[] a, int target) {
-    	int indMax=0;
+    	int maxInd=0;
     	for (int i=1; i<target; i++) {
-    	  if(a[indMax]<=a[i]) {
-    		  indMax=i;
+    	  if(a[maxInd]<=a[i]) {
+    		  maxInd=i;
     	  }
     	  
       }
-    	return indMax;
+    	return maxInd;
     }
     private static void flip(int[] a, int index) {
     	int temp;
-    	for (int i=0; i<=index-i; i++) {
+    	for (int i=0; i<index/2; i++) {
     		temp=a[i];
     		a[i]=a[index-i];
     		a[index-i]=temp;
@@ -35,11 +36,11 @@ class Solution {
     }
 //start
     public static void main(String[] args){
-        int[] arr = {7,2,5,1,7,8,9};
+        int[] arr = {7,2,5,1,7,8,9,10,20};
     
         pancakeSort(arr);
         for(int a:arr) {
-        	System.out.print(a);
+        	System.out.print(a+", ");
         }
        
     
