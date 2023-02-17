@@ -7,7 +7,6 @@ class Solution {
     	
     	for (int i=inputArray.length; i>1; i--) {
     		int maxIndex=find(inputArray,i);
-    		System.out.println(maxIndex);
     		if (maxIndex!=i-1) {
     			flip(inputArray,maxIndex);
     			flip(inputArray,i-1);
@@ -36,7 +35,7 @@ class Solution {
     }
 //start
     public static void main(String[] args){
-        int[] arr = {7,2,5,1,7,8,9,10,20};
+        int[] arr = {7,2,5,23,21,38,1,7,8,9,10,20,200,300};
     
         pancakeSort(arr);
         for(int a:arr) {
